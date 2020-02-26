@@ -2,7 +2,7 @@ package lesson_2;
 
 import java.util.Arrays;
 
-public class MyArrayDataException extends ArithmeticException {
+public class MyArrayDataException extends NumberFormatException {
 
     private String index;
 
