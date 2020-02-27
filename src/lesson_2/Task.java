@@ -52,7 +52,14 @@ public class Task {
     private static void checkSizeArray(String[][] array) {
 
         boolean isCorrectSize1 = array.length == SIZE_1;
-        boolean isCorrectSize2 = array[0].length == SIZE_2;
+        boolean isCorrectSize2 = true;
+
+        for (String[] strings : array) {
+            if (strings.length != SIZE_2) {
+                isCorrectSize2 = false;
+                break;
+            }
+        }
 
         if (!isCorrectSize1 || !isCorrectSize2) {
             throw new MyArraySizeException(SIZE_1, SIZE_2);
