@@ -1,31 +1,22 @@
 package lesson_3;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class PhoneBook {
 
-    private Map<String, String> phonebook;
+    private Map<String, Set<String>> phoneBook;
 
     public PhoneBook() {
-        this.phonebook = new HashMap<>();
+        this.phoneBook = new HashMap<>();
     }
 
     public void add(String name, String phone) {
-        this.phonebook.put(phone, name);
+        Set<String> phones = this.getPhoneByName(name);
+        phones.add(phone);
+        this.phoneBook.put(name, phones);
     }
 
-    public List<String> getPhoneByName(String name) {
-        List<String> phones = new LinkedList<>();
-
-        for (Map.Entry<String, String> phone  : this.phonebook.entrySet()) {
-            if ( name.equals(phone.getValue()) ) {
-                phones.add(phone.getKey());
-            }
-        }
-
-        return phones;
+    public Set<String> getPhoneByName(String name) {
+        return this.phoneBook.getOrDefault(name, new HashSet<>());
     }
 }
