@@ -35,13 +35,18 @@ public class ChatWindow {
             return;
         }
         String user = userList.getSelectedValue();
+        String message = getMessage(user, textValue);
+        chat.append(message);
+        text.setText(null);
+    }
+
+    private String getMessage(String user, String textValue) {
         String message;
         if (user != null) {
             message = "@" + user + ": ";
         } else {
             message = "я: ";
         }
-        chat.append(message + textValue + "\n");
-        text.setText(null);
+        return message + textValue + "\n";
     }
 }
